@@ -1,21 +1,6 @@
 #ifndef __STDINT_H__
 #define __STDINT_H__
 
-#include "assert.h"
-
-#define __stdint_typedef_iu(itype, utype, bits) \
-    typedef itype   i ## bits; \
-    typedef utype   u ## bits;
-
-#define __stdint_typedef_TYPE__(bits) \
-    __stdint_typedef_iu(__INT ## bits ## _TYPE__, __UINT ## bits ## _TYPE__, bits)
-
-#define __stdint_int_t_assert(type, expected_bits) \
-    static_assert((sizeof(type) * 8) == (expected_bits), "size of " # type " must be " # expected_bits " bits")
-
-#define __stdint_int_t_assert_iu(bits) \
-    __stdint_int_t_assert(i ## bits, bits); \
-    __stdint_int_t_assert(u ## bits, bits);
 
 #ifndef __INT8_TYPE__
     typedef signed char     __INT8_TYPE__;
@@ -44,26 +29,35 @@
     #define i64 i64
     #define u64 u64
 
-    __stdint_typedef_TYPE__(8)
-    __stdint_typedef_TYPE__(16)
-    __stdint_typedef_TYPE__(32)
-    __stdint_typedef_TYPE__(64)
+    typedef __INT8_TYPE__   i8;
+    typedef __UINT8_TYPE__  u8;
+    typedef __INT8_TYPE__   int8_t;
+    typedef __UINT8_TYPE__  uint8_t;
 
-    __stdint_int_t_assert_iu(8)
-    __stdint_int_t_assert_iu(16)
-    __stdint_int_t_assert_iu(32)
-    __stdint_int_t_assert_iu(64)
+    typedef __INT16_TYPE__  i16;
+    typedef __UINT16_TYPE__ u16;
+    typedef __INT16_TYPE__  int16_t;
+    typedef __UINT16_TYPE__ uint16_t;
+
+    typedef __INT32_TYPE__  i32;
+    typedef __UINT32_TYPE__ u32;
+    typedef __INT32_TYPE__  int32_t;
+    typedef __UINT32_TYPE__ uint32_t;
+
+    typedef __INT64_TYPE__  i64;
+    typedef __UINT64_TYPE__ u64;
+    typedef __INT64_TYPE__  int64_t;
+    typedef __UINT64_TYPE__ uint64_t;
 #endif /* .int*_t */
-
-#undef __stdint_int_t_assert_iu
-#undef __stdint_int_t_assert
-#undef __stdint_typedef_TYPE__
-#undef __stdint_typedef_iu
-
 
 #ifndef usize
     #define usize usize
-    typedef u64 usize;
+    typedef __UINT64_TYPE__ usize;
+#endif
+
+#ifndef size_t
+    #define size_t size_t
+    typedef usize size_t;
 #endif
 
 #endif /* __STDINT_H__ */
