@@ -1,5 +1,5 @@
 section .text
-    global __syscall0, __syscall1, __syscall2, __syscall3, __syscall4, __syscall5, __syscall6
+    global __syscall0, __syscall1, __syscall2, __syscall3, __syscall4, __syscall5;, __syscall6
 
 __syscall0:
     mov rax, rdi
@@ -46,5 +46,5 @@ __syscall5:
     syscall
     ret
 
-__syscall6:
-    ret
+; __syscall6:
+;     ret

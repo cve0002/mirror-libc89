@@ -9,11 +9,14 @@ CC := clang
 AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword
 
 CSTD := -std=c89
-INCLUDE := -I arch/$(TARGET)/include
-CFLAGS := $(CSTD) $(INCLUDE) -Werror -Wall -Wvla -pedantic-errors -nostdlib -nostdinc -nostartfiles -ffreestanding -fno-common
+INCLUDE := -Iarch/$(TARGET)/include ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/
+CFLAGS := $(CSTD) $(INCLUDE) -Werror -Wall -Wvla -pedantic-errors -nostdlib -nostdinc -ffreestanding -fno-common
 
-ASMSRC := ${wildcard arch/$(TARGET)/*.S}
+ASMSRC := ${wildcard arch/$(TARGET)/**/*.S}
 ASMOBJ := $(ASMSRC:.S=.S.o)
+
+CSRC := ${wildcard arch/$(TARGET)/**/*.c source/**/*.c}
+COBJ := $(CSRC:.c=.c.o)
 
 
 .PHONY: lib objdump test clean
@@ -26,16 +29,18 @@ objdump:
 	@echo -e '\n\n============================================\n\n'
 
 test: $(LIB)
-	$(CC) $(CFLAGS) test/main.c $(LIB) -o test/main
+	$(CC) $(CFLAGS) -nostartfiles test/main.c $(LIB) -o test/main
 	./test/main
 
 clean:
-	rm -rf $(ASMOBJ) test/main
+	rm -rf $(ASMOBJ) $(COBJ) test/main
 
 
-$(LIB): $(ASMOBJ)
-	$(AR) rs $(LIB) $(ASMOBJ)
+$(LIB): $(ASMOBJ) $(COBJ)
+	$(AR) rs $(LIB) $(ASMOBJ) $(COBJ)
 
 %.S.o: %.S
 	$(ASM) $(AFLAGS) $< -o $@
 
+%.c.o: %.c
+	$(CC) $(CFLAGS) $< -c -o $@
