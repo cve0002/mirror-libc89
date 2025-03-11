@@ -4,21 +4,21 @@ section .text
     extern __setprogname
     extern main
 
+
 _start:
     xor rbp, rbp
 
     mov rdi, rsp ; rsp_ptr
     call __init_environ
 
-    mov rax, qword [rsp + 8] ; char **argv
-    mov rdi, qword [rax] ; argv[0]
+    mov rdi, qword [rsp + 8]
     call __setprogname
 
     ; push argc to rdi and argv to rsi for main
     mov rdi, qword [rsp] ; <usize> argc (<int> in C)
     lea rsi, qword [rsp + 8] ; <usize> argv (<char **> in C)
     call main
-
+    
     mov rdi, rax
     mov rax, 60
     syscall ; exit

@@ -1,7 +1,10 @@
 #include "io/stdio.h"
 #include "string/string.h"
+#include "progname/progname.h"
 
-int main(int argc, const char **argv) {
-    write(STDOUT_FILENO, argv[0], strlen(argv[0]));
-    return argc - 1;
+
+int main(void) {
+    const char *pn = __getprogname();
+    write(STDOUT_FILENO, pn, strlen(pn));
+    return 0;
 }
