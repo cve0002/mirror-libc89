@@ -6,7 +6,7 @@ AR := ar
 ASM := nasm
 CC := clang
 
-AFLAGS := -elf64 -w+x -w+error -w+all
+AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword
 
 CSTD := -std=c89
 INCLUDE :=
