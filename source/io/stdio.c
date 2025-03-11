@@ -1,0 +1,11 @@
+#include "__syscall.h"
+#include "syscall.h"
+#include "io/stdio.h"
+
+int write(fd_t fd, const char *s, usize len) {
+    return __syscall3(SYS_write, fd, (usize) s, len);
+}
+
+int read(fd_t fd, char *buf, usize len) {
+    return __syscall3(SYS_read, fd, (usize) buf, len);
+}

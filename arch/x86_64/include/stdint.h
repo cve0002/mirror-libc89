@@ -50,10 +50,8 @@
     typedef __UINT64_TYPE__ uint64_t;
 #endif /* .int*_t */
 
-#ifndef usize
-    #define usize usize
-    typedef __UINT64_TYPE__ usize;
-#endif
+typedef __INT64_TYPE__ isize;
+typedef __UINT64_TYPE__ usize;
 
 #ifndef size_t
     #define size_t size_t

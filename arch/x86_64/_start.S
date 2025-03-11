@@ -1,13 +1,18 @@
 section .text
     global _start
-    ; extern _init_environ_C
+    extern __init_environ
+    extern __setprogname
     extern main
 
 _start:
     xor rbp, rbp
 
-    ; mov rdi, rsp
-    ; call _init_environ_C
+    mov rdi, rsp ; rsp_ptr
+    call __init_environ
+
+    mov rax, qword [rsp + 8] ; char **argv
+    mov rdi, qword [rax] ; argv[0]
+    call __setprogname
 
     ; push argc to rdi and argv to rsi for main
     mov rdi, qword [rsp] ; <usize> argc (<int> in C)

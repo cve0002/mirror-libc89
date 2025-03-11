@@ -1,9 +1,9 @@
 const char *__progname = 0;
 
-void setprogname(const char *name) {
+void __setprogname(const char *name) {
     __progname = name;
 }
 
-const char *getprogname(void) {
+const char *__getprogname(void) {
     return __progname;
 }
