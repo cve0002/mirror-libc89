@@ -1,3 +1,5 @@
 **.o
 **/**.o
 **.a
+test/main
+compile_flags.txt
