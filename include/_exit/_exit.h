@@ -1,4 +1,4 @@
 #include "stdint.h"
 #include "stddef.h"
 
-extern void _exit(usize status) __noreturn__;
+extern void _exit(usize status);
