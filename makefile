@@ -1,6 +1,6 @@
 TARGET := x86_64
 
-LIB := libcve000libc.a
+LIB := liblibc.a
 
 AR := ar
 ASM := nasm
@@ -34,7 +34,7 @@ test: $(LIB)
 	@./test/main
 
 clean:
-	rm -rf $(ASMOBJ) $(COBJ) test/main
+	rm -rf $(ASMOBJ) $(COBJ) $(LIB) test/main
 
 
 $(LIB): $(ASMOBJ) $(COBJ)

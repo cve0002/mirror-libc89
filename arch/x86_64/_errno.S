@@ -1,9 +1,12 @@
 section .text
-    global _errno_after_syscall_prepare_for_c
-    extern __set_errno
+    global _set_errno_after_syscall
+    extern __errno_location
 
-_errno_after_syscall_prepare_for_c:
+_set_errno_after_syscall:
+    push rbx
     neg rax
-    mov rdi, rax
-    call __set_errno
+    mov rbx, rax ; save syscall result
+    call __errno_location ; get int *errno to rax
+    mov dword [rax], ebx ; set errno
+    pop rbx
     ret

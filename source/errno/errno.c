@@ -1,12 +1,7 @@
-#include "stdint.h"
+#include "errno/errno.h"
 #include "errno/errnos.h"
 
-static int __errno = ENOERR;
-
-void __set_errno(usize _errno) {
-    __errno = _errno;
-}
-
-int *__errno_location(void) {
+errno_t *__errno_location(void) {
+    static int __errno = -1;
     return &__errno;
 }
