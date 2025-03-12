@@ -1,5 +1,5 @@
-#ifndef __SYSCALLNS_H__
-#define __SYSCALLNS_H__
+#ifndef __SYSCALLNO_H__
+#define __SYSCALLNO_H__
 
 #define SYS_read   0
 #define SYS_write    1
@@ -365,4 +365,4 @@
 #define SYS_cachestat  451
 #define SYS_fchmodat2  452
 
-#endif /* __SYSCALLNS_H__ */
+#endif /* __SYSCALLNO_H__ */

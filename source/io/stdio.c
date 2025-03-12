@@ -1,4 +1,3 @@
-#include "__syscall.h"
 #include "syscall.h"
 #include "io/stdio.h"
 
