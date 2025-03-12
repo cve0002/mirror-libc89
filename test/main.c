@@ -1,14 +1,14 @@
 #include "io/stdio.h"
 #include "string/string.h"
+#include "environ/environ.h"
+#include "errno/errno.h"
+#include "stddef.h"
 
 
 extern char **__environ;
 
 int main(void) {
-    int i;
-    for (i = 0; __environ[i]; i++) {
-        write(STDOUT_FILENO, __environ[i], strlen(__environ[i]));
-        write(STDOUT_FILENO, "\n", 1);
-    }
+    const char *home = getenv("TEST");
+    write(STDOUT_FILENO, home, strlen(home));
     return 0;
 }

@@ -55,7 +55,7 @@ typedef __UINT64_TYPE__ usize;
 
 #ifndef size_t
     #define size_t size_t
-    typedef usize size_t;
+    typedef __typeof(sizeof(0)) size_t;
 #endif
 
 #endif /* __STDINT_H__ */

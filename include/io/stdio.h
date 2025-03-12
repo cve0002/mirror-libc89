@@ -12,7 +12,7 @@
 #define _IO_EOF (-1)
 #define EOF _IO_EOF
 
-extern int write(fd_t fd, const char *s, usize len);
-extern int read(fd_t fd, char *buf, usize len);
+extern int write(fd_t fd, const char *s, size_t len);
+extern int read(fd_t fd, char *buf, size_t len);
 
 #endif /* __STDIO_H__ */

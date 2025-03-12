@@ -9,8 +9,8 @@ CC := clang
 AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword
 
 CSTD := -std=c89
-INCLUDE := -Iarch/$(TARGET)/include ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/internal/
-CFLAGS := $(CSTD) $(INCLUDE) -Werror -Wall -Wvla -pedantic-errors -nostdlib -nostdinc -ffreestanding -fno-common 
+INCLUDE := -Iarch/$(TARGET)/include ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/_internal/
+CFLAGS := -g $(CSTD) $(INCLUDE) -Werror -Wall -Wvla -pedantic-errors -nostdlib -nostdinc -ffreestanding -fno-common 
 
 ASMSRC := ${wildcard arch/$(TARGET)/**.S}
 ASMOBJ := $(ASMSRC:.S=.S.o)
