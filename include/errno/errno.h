@@ -12,4 +12,6 @@
 extern errno_t *__errno_location(void);
 #define errno (*__errno_location())
 
+extern const char *strerror(int);
+
 #endif /* __ERRNO_H__ */

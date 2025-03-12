@@ -142,6 +142,7 @@
 
 #define ERFKILL             132         /* Operation not possible due to RF-kill */
 
-#define _ERRNOMAX           4095        /* Max possible errno */
+#define _ERRNOLAST          ERFKILL
+#define _ERRNOMAX           4095        /* Max possible error-errno */
 
 #endif /* __ERRNOS_H__ */

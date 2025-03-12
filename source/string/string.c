@@ -8,11 +8,20 @@ size_t strlen(const char *s) {
     return p - s;
 }
 
+
 const char *strchr(register const char *s, int c) {
     do {
         if (*s == c) return s;
     } while (*s++);
     return NULL;
+}
+
+const char *strrchr(register const char *s, int c) {
+    const char *p = NULL;
+    do {
+        if (*s == c) p = s;
+    } while (*s++);
+    return p;
 }
 
 

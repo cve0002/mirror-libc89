@@ -5,8 +5,10 @@
 #include "stddef.h"
 
 int main(void) {
+    const char *s;
     const char *home = getenv("HOME");
     write(STDOUT_FILENO, home, strlen(home));
-    write(STDOUT_FILENO, errno <= 0 ? "0" : "E", 1);
+    s = strerror(errno);
+    write(STDOUT_FILENO, s, strlen(s));
     return 0;
 }
