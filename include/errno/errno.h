@@ -13,5 +13,6 @@ extern errno_t *__errno_location(void);
 #define errno (*__errno_location())
 
 extern const char *strerror(int);
+extern void perror(const char *msg);
 
 #endif /* __ERRNO_H__ */

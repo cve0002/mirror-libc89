@@ -5,10 +5,13 @@
 #include "stddef.h"
 
 int main(void) {
-    const char *s;
-    const char *home = getenv("HOME");
+    const char *home;
+
+    home = getenv("HOME");
     write(STDOUT_FILENO, home, strlen(home));
-    s = strerror(errno);
-    write(STDOUT_FILENO, s, strlen(s));
+    write(STDOUT_FILENO, "\n", 1);
+    
+    perror(NULL);
+    
     return 0;
 }
