@@ -8,7 +8,7 @@
 extern char **__environ;
 
 int main(void) {
-    const char *home = getenv("TEST");
-    write(STDOUT_FILENO, home, strlen(home));`
+    const char *home = getenv("HOME");
+    write(STDOUT_FILENO, home, strlen(home));
     return 0;
 }

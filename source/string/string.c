@@ -1,6 +1,7 @@
 #include "stddef.h"
 #include "stdint.h"
 
+
 size_t strlen(const char *s) {
     register const char *p = s;
     for (; *p; p++) {}
