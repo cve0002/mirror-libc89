@@ -3,8 +3,8 @@
 
 usize strlen(const char *s) {
     const char *p = s;
-    while (*p++);
-	return p - s;
+    while (*p++) {}
+    return p - s;
 }
 
 const char *strchr(const char *s, int c) {

@@ -9,6 +9,7 @@ _start:
     xor rbp, rbp
 
     mov rdi, rsp ; rsp_ptr
+    mov rsi, qword [rsp] ; argc
     call __init_environ
 
     mov rdi, qword [rsp + 8]

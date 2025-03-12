@@ -1,10 +1,14 @@
 #include "io/stdio.h"
 #include "string/string.h"
-#include "progname/progname.h"
 
+
+extern char **__environ;
 
 int main(void) {
-    const char *pn = __getprogname();
-    write(STDOUT_FILENO, pn, strlen(pn));
+    int i;
+    for (i = 0; __environ[i]; i++) {
+        write(STDOUT_FILENO, __environ[i], strlen(__environ[i]));
+        write(STDOUT_FILENO, "\n", 1);
+    }
     return 0;
 }
