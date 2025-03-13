@@ -6,7 +6,7 @@
 
 
 static const char *__errmsg_arr[_ERRNOLAST + 1] = {
-    #include "__strerror.h"
+    #include "__strerror.inc.h"
 };
 
 const char *strerror(int e) {
@@ -17,7 +17,7 @@ const char *strerror(int e) {
 
 void __perror(const char *msg) {
     const char *errstr;
-    if (msg) {
+    if (msg && msg[0] != '\0') {
         write(STDERR_FILENO, msg, strlen(msg));
         write(STDERR_FILENO, ": ", 2);
     }

@@ -3,6 +3,10 @@ section .text
     extern __errno_location
 
 _set_errno_after_syscall:
+    cmp rax, 0
+    jl .err
+    ret
+    .err:
     push rbx
     neg rax
     mov rbx, rax ; save syscall result
