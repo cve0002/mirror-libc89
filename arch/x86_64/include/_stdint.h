@@ -53,14 +53,4 @@
 typedef __INT64_TYPE__ isize;
 typedef __UINT64_TYPE__ usize;
 
-#ifndef size_t
-    #define size_t size_t
-    typedef __typeof(sizeof(0)) size_t;
-#endif
-
-#ifndef uintptr_t
-    #define uintptr_t uintptr_t
-    typedef __typeof(sizeof(char *)) uintptr_t;
-#endif
-
 #endif /* __STDINT_H */

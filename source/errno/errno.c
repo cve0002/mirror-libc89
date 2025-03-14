@@ -1,8 +1,19 @@
 #include "errno/errno.h"
 #include "_libc.h"
 #include "errno/errnos.h"
-#include "io/stdio.h"
+#include "unistd.h"
 #include "string/string.h"
+#include "stdint.h"
+#include "stdio.h"
+
+
+isize __syscall_ret_handle(usize res) {
+    if (res >= -4095UL) {
+        errno = -res;
+        return -1;
+    }
+    return res;
+} 
 
 
 static const char *__errmsg_arr[_ERRNOLAST + 1] = {

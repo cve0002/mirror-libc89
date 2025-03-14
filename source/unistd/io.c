@@ -1,5 +1,7 @@
+#include "sys/types.h"
 #include "syscall.h"
-#include "io/stdio.h"
+#include "stddef.h"
+
 
 int write(fd_t fd, const char *s, size_t len) {
     return __syscall3(SYS_write, fd, (usize) s, len);

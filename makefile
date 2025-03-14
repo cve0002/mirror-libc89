@@ -10,7 +10,9 @@ AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword
 
 CSTD := -std=c89
 INCLUDE := -Iarch ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/_internal/
-CFLAGS := -g $(CSTD) $(INCLUDE) -Werror -Wall -Wvla -pedantic-errors -nostdlib -nostdinc -ffreestanding -fno-common 
+CWARN := -Werror -Wall -Wvla -pedantic-errors
+CNOFLAGS := -nostdlib -nostdinc -fno-builtin -fno-common -fnoexecstack -fno-stack-protector
+CFLAGS := $(CSTD) $(INCLUDE) $(CWARN)  -ffreestanding -fdata-sections
 
 ASMSRC := ${wildcard arch/$(TARGET)/**.S}
 ASMOBJ := $(ASMSRC:.S=.S.o)

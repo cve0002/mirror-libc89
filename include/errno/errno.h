@@ -2,7 +2,6 @@
 #define __ERRNO_H__
 
 #include "errnos.h"
-#include "stdint.h"
 
 #ifndef errno_t
     #define errno_t errno_t
