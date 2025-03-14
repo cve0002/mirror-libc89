@@ -1,4 +1,4 @@
 #include "stdint.h"
 #include "stddef.h"
 
-extern void _exit(isize status) noreturn;
+extern void _exit(int status) noreturn;

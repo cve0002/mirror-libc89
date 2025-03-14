@@ -6,7 +6,7 @@
 
 
 int open(const char *path, flags_t flags, ...) {
-    mode_t mode = 0622;
+    mode_t mode = 0;
 
     if (flags & O_CREAT) {
         va_list va;
@@ -19,7 +19,7 @@ int open(const char *path, flags_t flags, ...) {
 }
 
 int openat(fd_t dirfd, const char *path, flags_t flags, ...) {
-    mode_t mode = 0622;
+    mode_t mode = 0;
 
     if (flags & O_CREAT) {
         va_list va;
