@@ -1,9 +1,18 @@
 #ifndef __SYS_TYPES_H__
 #define __SYS_TYPES_H__
 
+
 #ifndef ssize_t
+    #include "arch/arch.h"
+    #include "stdint.h"
+
     #define ssize_t ssize_t
-    typedef __typeof(-sizeof(0)) ssize_t;
+
+    #ifdef _LIBC_ARCH_BITS_64
+        typedef int64_t ssize_t;
+    #elif defined(_LIBC_ARCH_BITS_32)
+        typedef int32_t ssize_t;
+    #endif
 #endif
 
 
