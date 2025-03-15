@@ -1,4 +1,5 @@
 #include "stddef.h"
+#include "sys/types.h"
 #include "syscall.h"
 
 
@@ -14,6 +15,6 @@ int unlink(const char *path) {
     return __syscall1(SYS_unlink, (uintptr_t) path);
 }
 
-int readlink(const char *path, char *buf, size_t bufsiz) {
+ssize_t readlink(const char *path, char *buf, size_t bufsiz) {
     return __syscall3(SYS_readlink, (uintptr_t) path, (uintptr_t) buf, bufsiz);
 }
