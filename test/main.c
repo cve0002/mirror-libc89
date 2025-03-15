@@ -17,13 +17,10 @@ int _fputs(const char *s, fd_t fd) {
 
 
 int main(void) {
-    int fd;
     char buftest[11];
-    char hwbuf[20];
-    const char *hw = "Hello, World!\n";
-    size_t hwl = strlen(hw);
     const char *progname;
     const char *env_test_var;
+    char cwd[100];
 
     env_test_var = getenv("XDG_CURRENT_DESKTOP");
     _fputs(env_test_var, STDOUT_FILENO);
@@ -37,24 +34,35 @@ int main(void) {
     progname = getprogname();
     _fputs(progname, STDOUT_FILENO);
     print_line_feed();
+
+    if (-1 == chdir("test")) {
+        perror("chdir");
+        return -1;
+    }
+
+    if (-1 == mkdir("test.d", _S_DEFDIR)) {
+        perror("mkdir");
+        return -1;
+    }
+    _fputs("test/test.d created\n", STDOUT_FILENO);
+
+    if (-1 == rmdir("test.d")) {
+        perror("rmdir");
+        return -1;
+    }
+    _fputs("test/test.d removed\n", STDOUT_FILENO);
+
+    if (-1 == chdir("..")) {
+        perror("chdir");
+        return -1;
+    }
+
+
+    if (!getcwd(cwd, sizeof(cwd))) {
+        perror("getcwd");
+        return -1;
+    }
     
-    fd = open("test/test.txt", O_RDONLY);
-    if (-1 == fd) {
-        perror("open");
-        return -1;
-    }
-    if (-1 == read(fd, hwbuf, hwl)) {
-        perror("read");
-        return -1;
-    }
-    if (-1 == write(STDOUT_FILENO, hwbuf, hwl)) {
-        perror("write");
-        return -1;
-    }
-    if (-1 == close(fd)) {
-        perror("close");
-        return -1;
-    }
 
     return 0;
 }

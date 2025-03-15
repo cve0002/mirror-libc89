@@ -6,37 +6,53 @@
 
 
 /* I/O */
-extern int write(fd_t fd, const char *s, size_t len);
-extern int read(fd_t fd, char *buf, size_t len);
+int write(fd_t fd, const char *s, size_t len);
+int read(fd_t fd, char *buf, size_t len);
 /* I/O */
 
 
 /* filesystem */
-extern void sync(void);
-extern int close(fd_t fd);
+void sync(void);
+
+int close(fd_t fd);
+
+int chdir(const char *path);
+int fchdir(fd_t fd);
+
+int mkdir(const char *path, mode_t mode);
+int rmdir(const char *path);
+
+char *getcwd(char *buf, size_t size);
+
+int link(const char *oldpath, const char *newpath);
+int symlink(const char *oldpath /* target, src */, const char *newpath /* linkpath, dest */);
+int unlink(const char *path);
+int readlink(const char *path, char *buf, size_t bufsiz);
 /* filesystem */
 
 
-extern pid_t getpid(void);
-extern pid_t getppid(void);
+/* {gs}et{preseug}id() */
+pid_t getpid(void);
+pid_t getppid(void);
 
-extern int getresuid(uid_t *ruid, uid_t *euid, uid_t *suid);
-extern int setresuid(uid_t ruid, uid_t euid, uid_t suid);
-extern int getresgid(uid_t *rgid, uid_t *egid, uid_t *sgid);
-extern int setresgid(uid_t rgid, uid_t egid, uid_t sgid);
+int getresuid(uid_t *ruid, uid_t *euid, uid_t *suid);
+int setresuid(uid_t ruid, uid_t euid, uid_t suid);
+int getresgid(uid_t *rgid, uid_t *egid, uid_t *sgid);
+int setresgid(uid_t rgid, uid_t egid, uid_t sgid);
 
-extern int setreuid(uid_t ruid, uid_t euid);
-extern int setregid(uid_t rgid, uid_t egid);
+int setreuid(uid_t ruid, uid_t euid);
+int setregid(uid_t rgid, uid_t egid);
 
-extern uid_t getuid(void);
-extern int setuid(uid_t);
-extern uid_t geteuid(void);
-extern int seteuid(uid_t);
+uid_t getuid(void);
+int setuid(uid_t);
+uid_t geteuid(void);
+int seteuid(uid_t);
 
-extern uid_t getgid(void);
-extern int setgid(uid_t);
-extern uid_t getegid(void);
-extern int setegid(uid_t);
+uid_t getgid(void);
+int setgid(uid_t);
+uid_t getegid(void);
+int setegid(uid_t);
+/* {gs}et{preseug}id() */
 
 
 #endif /* __UNISTD_H__ */

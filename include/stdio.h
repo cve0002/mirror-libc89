@@ -15,4 +15,7 @@
 typedef struct _IO_FILE FILE;
 
 
+int rename(const char *oldpath, const char *newpath);
+
+
 #endif /* __STDIO_H__ */
