@@ -1,5 +1,5 @@
-#include "stddef.h"
-#include "stdint.h"
+#include <stddef.h>
+#include <stdint.h>
 
 char **__environ = NULL;
 

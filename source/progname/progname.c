@@ -1,6 +1,6 @@
-#include "stddef.h"
-#include "string/string.h"
-#include "_libc.h"
+#include <stddef.h>
+#include <string.h>
+#include <_libc.h>
 
 static const char *__progname = NULL;
 

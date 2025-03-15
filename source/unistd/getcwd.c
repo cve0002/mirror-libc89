@@ -1,6 +1,6 @@
-#include "stddef.h"
-#include "stdint.h"
-#include "syscall.h"
+#include <stddef.h>
+#include <stdint.h>
+#include <syscall.h>
 
 
 char *getcwd(char *buf, size_t size) {

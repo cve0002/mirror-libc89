@@ -1,12 +1,11 @@
-#include "stdio.h"
-#include "sys/stat.h"
-#include "unistd.h"
-#include "string/string.h"
-#include "environ/environ.h"
-#include "errno/errno.h"
-#include "memory/memory.h"
-#include "progname/progname.h"
-#include "fcntl.h"
+#include <sys/stat.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <environ.h>
+#include <errno.h>
+#include <memory.h>
+#include <progname.h>
 
 
 int _fputs(const char *s, fd_t fd) {

@@ -1,10 +1,8 @@
-#include "errno/errno.h"
-#include "_libc.h"
-#include "errno/errnos.h"
-#include "unistd.h"
-#include "string/string.h"
-#include "stdint.h"
-#include "stdio.h"
+#include <errno.h>
+#include <_libc.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
 
 
 isize __syscall_ret_handle(usize res) {

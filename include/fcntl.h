@@ -1,8 +1,7 @@
 #ifndef __FCNTL_H__
 #define __FCNTL_H__
 
-#include "sys/types.h"
-#include "stdint.h"
+#include <sys/types.h>
 
 
 #define AT_FDCWD -100

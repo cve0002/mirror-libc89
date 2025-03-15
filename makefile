@@ -9,7 +9,7 @@ CC := clang
 AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword
 
 CSTD := -std=c89
-INCLUDE := -Iarch ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/_internal/
+INCLUDE := -Iarch/$(TARGET) ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/_internal/
 CWARN := -Werror -Wall -Wvla -pedantic-errors
 CNOFLAGS := -nostdlib -nostdinc -fno-builtin -fno-common -fnoexecstack -fno-stack-protector
 CFLAGS := $(CSTD) $(INCLUDE) $(CWARN)  -ffreestanding -fdata-sections

@@ -1,6 +1,6 @@
-#include "stddef.h"
-#include "sys/types.h"
-#include "syscall.h"
+#include <sys/types.h>
+#include <syscall.h>
+#include <stddef.h>
 
 
 int link(const char *oldpath, const char *newpath) {

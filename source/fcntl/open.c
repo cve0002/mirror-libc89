@@ -1,8 +1,7 @@
-#include "stdarg.h"
-#include "stdint.h"
-#include "fcntl.h"
-#include "sys/types.h"
-#include "syscall.h"
+#include <stdarg.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <syscall.h>
 
 
 int open(const char *path, flags_t flags, ...) {

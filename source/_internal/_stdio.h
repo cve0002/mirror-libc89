@@ -1,7 +1,7 @@
 #ifndef __STDIO_H
 #define __STDIO_H
 
-#include "sys/types.h"
+#include <sys/types.h>
 
 struct _IO_FILE {
     fd_t fd;

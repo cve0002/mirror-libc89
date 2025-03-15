@@ -1,5 +1,5 @@
-#include "stddef.h"
-#include "stdint.h"
+#include <stddef.h>
+#include <stdint.h>
 
 
 size_t strlen(const char *s) {

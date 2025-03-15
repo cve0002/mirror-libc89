@@ -1,7 +1,7 @@
 #ifndef __STDIO_H__
 #define __STDIO_H__
 
-#include "sys/types.h"
+#include <sys/types.h>
 
 
 #define _IO_EOF (-1)

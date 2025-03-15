@@ -1,6 +1,6 @@
-#include "sys/types.h"
-#include "syscall.h"
-#include "stddef.h"
+#include <sys/types.h>
+#include <syscall.h>
+#include <stddef.h>
 
 
 int write(fd_t fd, const char *s, size_t len) {

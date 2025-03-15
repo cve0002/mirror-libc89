@@ -1,20 +1,13 @@
 #ifndef __SYS_TYPES_H__
 #define __SYS_TYPES_H__
 
+#include "stdint.h"
+
 
 #ifndef ssize_t
-    #include "arch/arch.h"
-    #include "stdint.h"
-
     #define ssize_t ssize_t
-
-    #ifdef _LIBC_ARCH_BITS_64
-        typedef int64_t ssize_t;
-    #elif defined(_LIBC_ARCH_BITS_32)
-        typedef int32_t ssize_t;
-    #endif
+    typedef intptr_t ssize_t;
 #endif
-
 
 typedef unsigned int    fd_t;       /* file descriptor number */
 typedef int             id_t;       /* general id type */

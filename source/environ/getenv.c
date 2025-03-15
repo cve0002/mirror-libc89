@@ -1,5 +1,5 @@
-#include "stddef.h"
-#include "string/string.h"
+#include <stddef.h>
+#include <string.h>
 
 extern char **__environ;
 

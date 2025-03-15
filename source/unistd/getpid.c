@@ -1,5 +1,5 @@
-#include "sys/types.h"
-#include "syscall.h"
+#include <sys/types.h>
+#include <syscall.h>
 
 
 pid_t getpid(void) {

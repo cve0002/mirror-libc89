@@ -1,6 +1,5 @@
-#include "_exit/_exit.h"
-#include "unistd.h"
-#include "stdio.h"
+#include <unistd.h>
+#include <stdio.h>
 
 #define STACK_CHK_FAIL_MSG "__stack_ch_fail: stack fault\n"
 #define STACK_CHK_FAIL_MSG_LEN 29

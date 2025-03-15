@@ -1,8 +1,6 @@
 #ifndef __STDARG_H__
 #define __STDARG_H__
 
-#include "stdint.h"
-
 #ifndef va_list
     #define va_list va_list
     typedef __builtin_va_list va_list;

@@ -1,8 +1,12 @@
 #ifndef __UNISTD_H__
 #define __UNISTD_H__
 
-#include "sys/types.h"
-#include "stddef.h"
+#include <sys/types.h>
+#include <stddef.h>
+
+
+
+extern void _exit(int status) noreturn;
 
 
 /* I/O */

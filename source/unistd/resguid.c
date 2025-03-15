@@ -1,5 +1,5 @@
-#include "sys/types.h"
-#include "syscall.h"
+#include <sys/types.h>
+#include <syscall.h>
 
 
 int getresuid(uid_t *ruid, uid_t *euid, uid_t *suid) {

@@ -1,6 +1,6 @@
-#include "stdint.h"
-#include "stddef.h"
-#include "_libc.h"
+#include <stdint.h>
+#include <stddef.h>
+#include <_libc.h>
 
 
 void *__memset(void *dest, register uint8_t b, register size_t size) {
