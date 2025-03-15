@@ -13,6 +13,9 @@ int read(fd_t fd, char *buf, size_t len);
 
 /* filesystem */
 void sync(void);
+int syncfs(fd_t file_fd);
+int fsync(fd_t fd);
+int fdatasync(fd_t fd);
 
 int close(fd_t fd);
 

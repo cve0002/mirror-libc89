@@ -54,6 +54,6 @@ int chmod(const char *path, mode_t mode);
 int fchmod(fd_t fd, mode_t mode);
 
 mode_t umask(mode_t);
-
+mode_t getumask(void);
 
 #endif /* __SYS_STAT_H__ */
