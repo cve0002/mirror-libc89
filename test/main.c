@@ -35,34 +35,35 @@ int main(void) {
     _fputs(progname, STDOUT_FILENO);
     print_line_feed();
 
-    if (-1 == chdir("test")) {
-        perror("chdir");
-        return -1;
-    }
-
+    
     if (-1 == mkdir("test.d", _S_DEFDIR)) {
         perror("mkdir");
         return -1;
     }
-    _fputs("test/test.d created\n", STDOUT_FILENO);
-
-    if (-1 == rmdir("test.d")) {
-        perror("rmdir");
+    _fputs("test.d created\n", STDOUT_FILENO);
+    
+    if (-1 == chdir("test")) {
+        perror("chdir");
         return -1;
     }
-    _fputs("test/test.d removed\n", STDOUT_FILENO);
+    
+    if (!getcwd(cwd, sizeof(cwd))) {
+        perror("getcwd");
+        return -1;
+    }
+    _fputs(cwd, STDOUT_FILENO);
+    print_line_feed();
+    
+    if (-1 == rename("../test.d", "./test.d")) {
+        perror("rename");
+        return -1;
+    }
+    _fputs("renamed test.d -> test/test.d\n", STDOUT_FILENO);
 
     if (-1 == chdir("..")) {
         perror("chdir");
         return -1;
     }
-
-
-    if (!getcwd(cwd, sizeof(cwd))) {
-        perror("getcwd");
-        return -1;
-    }
-    
 
     return 0;
 }

@@ -27,7 +27,11 @@ char *getcwd(char *buf, size_t size);
 int link(const char *oldpath, const char *newpath);
 int symlink(const char *oldpath /* target, src */, const char *newpath /* linkpath, dest */);
 int unlink(const char *path);
-int readlink(const char *path, char *buf, size_t bufsiz);
+ssize_t readlink(const char *path, char *buf, size_t bufsiz);
+
+int chown(const char *path, uid_t owner, gid_t group);
+int fchown(fd_t fd, uid_t owner, gid_t group);
+int lchown(const char *path, uid_t owner, gid_t group);
 /* filesystem */
 
 
