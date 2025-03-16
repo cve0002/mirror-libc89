@@ -6,7 +6,7 @@ AR := ar
 ASM := nasm
 CC := clang
 
-AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword
+AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword -iarch/
 
 CSTD := -std=c89
 INCLUDE := -Iarch/$(TARGET) ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/_internal/

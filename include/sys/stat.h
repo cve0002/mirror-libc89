@@ -2,7 +2,7 @@
 #define __SYS_STAT_H__
 
 
-#include "sys/types.h"
+#include <sys/types.h>
 
 
 #define S_IFMT      0170000     /* type of file */

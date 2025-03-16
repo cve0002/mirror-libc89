@@ -3,6 +3,7 @@
 
 #include <sys/types.h>
 
+
 #ifndef time_t
     #define time_t time_t
     typedef ssize_t time_t;
@@ -21,5 +22,9 @@ struct tm {
     int tm_yday;    /* days since January 1     [0-365] */
     int tm_isdst;   /* Daylight Saving Time flag */
 };
+
+
+time_t time(time_t *tloc); 
+
 
 #endif /* __TIME_H__ */
