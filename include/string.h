@@ -11,4 +11,6 @@ const char *strrchr(register const char *, int c);
 int strcmp(register const char *, register const char *);
 int strncmp(register const char *, register const char *, register size_t n);
 
+#include <memory.h>
+
 #endif /* __STRING_H__ */

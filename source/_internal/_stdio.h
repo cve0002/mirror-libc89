@@ -5,7 +5,7 @@
 
 struct _IO_FILE {
     fd_t fd;
-    flags_t flags;
+    int flags;
     mode_t mode;
 };
 

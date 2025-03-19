@@ -1,7 +1,7 @@
 #ifndef __SYSCALL_H__
 #define __SYSCALL_H__
 
-#include <stdint.h>
+#include <bits/stdint.h>
 
 extern isize __syscall0(usize syscallN);
 extern isize __syscall1(usize syscallN, usize arg0);

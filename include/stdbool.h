@@ -3,10 +3,11 @@
 
 #ifndef bool
     #ifdef __STRICT_ANSI__
-        #define _Bool int
+        #define _Bool unsigned char
     #endif
 
-    #define bool _Bool
+    #define bool bool
+    typedef _Bool bool;
 
     #define true 1
     #define false 0

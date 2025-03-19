@@ -1,0 +1,11 @@
+clang
+
+-Iinclude
+-Iarch/x86_64
+-Isource
+
+%c %h -std=c89
+%c %h -Werror -Wall -pedantic-errors
+%c %h -nostdlib -nostdlibinc -nostdinc -nobuiltininc -fno-builtin -fno-common
+%c %h -ffreestanding
+

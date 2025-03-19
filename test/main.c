@@ -6,6 +6,8 @@
 #include <errno.h>
 #include <memory.h>
 #include <progname.h>
+#include <time.h>
+#include <malloc.h>
 
 
 int _fputs(const char *s, fd_t fd) {
@@ -16,6 +18,9 @@ int _fputs(const char *s, fd_t fd) {
 
 
 int main(void) {
+    szdp_t *szdp;
+    time_t _time;
+    struct tm *tm;
     char buftest[11];
     const char *progname;
     const char *env_test_var;
@@ -63,6 +68,37 @@ int main(void) {
         perror("chdir");
         return -1;
     }
+
+    if (-1 == rmdir("test/test.d")) {
+        perror("rmdir");
+        return -1;
+    }
+    _fputs("removed test/test.d\n", STDOUT_FILENO);
+
+    szdp = szdp_init();
+    if (!szdp) {
+        perror("szdp_init");
+        return -1;
+    }
+    if (!szdp_malloc(szdp, sizeof(int))) {
+        perror("szdp_malloc");
+        return -1;
+    }
+    *szdp_ptr(szdp, int *) = 123456;
+    if (!szdp_realloc(szdp, sizeof(int) * 2)) {
+        perror("szdp_malloc");
+        return -1;
+    }
+    _fputs(*szdp_ptr(szdp, int *) == 123456 ? "szdp ok\n" : "szdp err\n", STDOUT_FILENO);
+    szdp_free(szdp);
+    if (szdp_get_len(szdp) != 0) {
+        perror("szdp_free");
+        return -1;
+    }
+
+    _time = time(&_time);
+    tm = localtime(&_time);
+    ignore(tm);
 
     return 0;
 }

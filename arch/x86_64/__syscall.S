@@ -1,5 +1,5 @@
 section .text
-    global __syscall0, __syscall1, __syscall2, __syscall3, __syscall4, __syscall5;, __syscall6, __syscall7
+    global __syscall0, __syscall1, __syscall2, __syscall3, __syscall4, __syscall5, __syscall6
     extern __syscall_ret_handle
 
 call_sys_ret:
@@ -54,6 +54,18 @@ __syscall5:
     mov rdx, rcx
     mov r10, r8
     mov r8, r9
+    syscall
+    call call_sys_ret
+    ret
+
+__syscall6:
+    mov rax, rdi
+    mov rdi, rsi
+    mov rsi, rdx
+    mov rdx, rcx
+    mov r10, r8
+    mov r8, r9
+    mov r9, qword [rsp - 8]
     syscall
     call call_sys_ret
     ret

@@ -15,8 +15,8 @@ typedef id_t            pid_t;      /* process id */
 typedef id_t            uid_t;      /* user id */
 typedef id_t            gid_t;      /* group id */
 typedef int             signo_t;    /* signal number */
-typedef int             flags_t;    /* general flags type */
 typedef int             mode_t;     /* file mode */
+typedef intptr_t        off_t;
 
 
 #endif /* __SYS_TYPES_H__ */

@@ -27,8 +27,8 @@
 #define O_DIRECT    0x020000    /* minimize cache effects of I/O to and from the file */
 
 
-int open(const char *path, flags_t flags, ... /* mode_t mode */);
-int openat(fd_t dirfd, const char *path, flags_t flags, ... /* mode_t mode */);
+int open(const char *path, int flags, ... /* mode_t mode */);
+int openat(fd_t dirfd, const char *path, int flags, ... /* mode_t mode */);
 int creat(const char *path, mode_t mode);
 
 int fcntl(fd_t fd, int op, usize arg);

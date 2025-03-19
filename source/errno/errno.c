@@ -1,5 +1,5 @@
 #include <errno.h>
-#include <_libc.h>
+#include <_internal/libc.h>
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>

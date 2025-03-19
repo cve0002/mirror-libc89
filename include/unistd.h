@@ -6,7 +6,7 @@
 
 
 
-extern void _exit(int status) noreturn;
+extern noreturn void _exit(int status);
 
 
 /* I/O */

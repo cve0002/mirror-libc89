@@ -4,7 +4,7 @@
 #include <syscall.h>
 
 
-int open(const char *path, flags_t flags, ...) {
+int open(const char *path, int flags, ...) {
     mode_t mode = 0;
 
     if (flags & O_CREAT) {
@@ -17,7 +17,7 @@ int open(const char *path, flags_t flags, ...) {
     return __syscall3(SYS_open, (uintptr_t) path, flags, mode);
 }
 
-int openat(fd_t dirfd, const char *path, flags_t flags, ...) {
+int openat(fd_t dirfd, const char *path, int flags, ...) {
     mode_t mode = 0;
 
     if (flags & O_CREAT) {
