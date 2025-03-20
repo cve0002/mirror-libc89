@@ -5,7 +5,6 @@
 #include <malloc.h>
 
 
-
 void *__szmalloc(size_t size) {
     void *p;
     if (!size) return NULL;
