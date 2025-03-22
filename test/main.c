@@ -20,7 +20,6 @@ int _fputs(const char *s, fd_t fd) {
 #define print_line_feed() write(STDOUT_FILENO, "\n", 1)
 
 
-
 int main(void) {
     szdp_t *szdp;
     time_t _time;
