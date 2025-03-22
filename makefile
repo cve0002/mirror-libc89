@@ -1,6 +1,6 @@
 TARGET := x86_64
 
-LIB := liblibc.a
+LIB := liblibc89.a
 
 AR := ar
 ASM := nasm
