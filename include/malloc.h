@@ -4,6 +4,12 @@
 #include <stddef.h>
 
 
+#ifndef _LIBC_MALLOC_ALLOCATION_ALIGNMENT
+    #define _LIBC_MALLOC_ALLOCATION_ALIGNMENT 16
+#endif 
+#define MEM_ALIGN_SIZE(size, alignment) (((size) + (alignment) - 1) & ~((alignment) - 1))
+
+
 void free(void *);
 void *malloc(size_t);
 void *realloc(void *, size_t);

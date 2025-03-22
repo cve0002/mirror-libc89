@@ -68,8 +68,7 @@ void szdp_free(struct __szdynptr *szdp) {
 }
 
 void *szdp_malloc(struct __szdynptr *szdp, size_t len) {
-    const size_t remlen = len % 16;
-    const size_t total_len = (0 == remlen) ? len : (len + 16 - remlen);
+    const size_t total_len = MEM_ALIGN_SIZE(len, _LIBC_MALLOC_ALLOCATION_ALIGNMENT);
     szdp->_p = __szmalloc(total_len);
     if (!szdp->_p) {
         szdp->_len = 0;
@@ -80,8 +79,7 @@ void *szdp_malloc(struct __szdynptr *szdp, size_t len) {
 }
 
 void *szdp_realloc(struct __szdynptr *szdp, size_t len) {
-    const size_t remlen = len % 16;
-    const size_t total_len = (0 == remlen) ? len : (len + 16 - remlen);
+    const size_t total_len = MEM_ALIGN_SIZE(len, _LIBC_MALLOC_ALLOCATION_ALIGNMENT);
     void *psave = szdp->_p;
     szdp->_p = __szrealloc(psave, szdp->_len, total_len);
     if (!szdp->_p) {

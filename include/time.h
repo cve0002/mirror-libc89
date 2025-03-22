@@ -6,7 +6,7 @@
 
 #ifndef time_t
     #define time_t time_t
-    typedef int64_t time_t;
+    typedef long time_t;
 #endif
 
 struct tm {

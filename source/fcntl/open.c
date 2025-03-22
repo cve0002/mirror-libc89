@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <syscall.h>
 
@@ -31,7 +32,7 @@ int openat(fd_t dirfd, const char *path, int flags, ...) {
 }
 
 int creat(const char *path, mode_t mode) {
-    return __syscall2(SYS_creat, (uintptr_t) path, mode);
-    /* return open(path, O_WRONLY | O_CREAT | O_TRUNC, mode); */
+    return open(path, O_WRONLY | O_CREAT | O_TRUNC, mode);
+    /* return __syscall2(SYS_creat, (uintptr_t) path, mode); */
 }
 

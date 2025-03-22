@@ -2,7 +2,8 @@
 #include <stdint.h>
 #include <errno.h>
 #include <sys/mman.h>
-#include <stdbool.h>
+#include <malloc.h>
+#include <unimplemented.h>
 #include <_internal/libc.h>
 
 
@@ -12,7 +13,7 @@
 #define MEMBLOCK_SIZE sizeof(struct __memblock)
 
 struct __memblock {
-    bool is_free;   /* is memory block now free for use */
+    byte_t is_free;   /* is memory block now free for use */
     size_t psize;   /* user-needed allocated memory size */
     size_t tsize;   /* total aligned size */
     struct __memblock *next; /* next memory block */
@@ -22,13 +23,11 @@ struct __memblock {
 #if 0
 static struct __memblock *find_free_memblock(size_t size) {
     struct __memblock *current = __heaphead;
-    struct __memblock *prev = NULL;
 
     while (current) {
         if (current->is_free && current->psize >= size) {
             return current;
         }
-        prev = current;
         current = current->next;
     }
 
@@ -41,14 +40,11 @@ static void mark_memblock_used(struct __memblock *mblk) {
 }
 
 static size_t alignbigsize(size_t size) {
-    const size_t remsize = size % PAGESIZE;
-    return (0 == remsize) ? size : (size + (PAGESIZE - remsize));
+    return MEM_ALIGN_SIZE(size, PAGESIZE);
 }
 
 static size_t alignsmallsize(size_t size) {
-    const size_t remsize = size % 16;
-    if (0 == remsize) return size;
-    return (remsize > 8) ? (size + 16 - remsize) : (size + 8 - remsize);
+    return MEM_ALIGN_SIZE(size, _LIBC_MALLOC_ALLOCATION_ALIGNMENT);
 }
 
 
@@ -78,6 +74,8 @@ static struct __memblock *memblock_allocate_small(size_t psize) {
 void *__libc_malloc(size_t size) 
 {
     struct __memblock *block = __heaphead;
+
+    unimplemented("__libc_malloc()");
 
     if (0 == size) return NULL;
 

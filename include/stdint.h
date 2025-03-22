@@ -2,20 +2,8 @@
 #define __STDINT_H__
 
 #include <arch/arch.h>
-#include <bits/stdint.h>
 #include <assert.h>
 #include <stddef.h>
-
-
-static_assert(sizeof(int8_t) == (8 / 8),    "sizeof(int8_t) must be equal 8/8 bytes");
-static_assert(sizeof(int16_t) == (16 / 8),  "sizeof(int16_t) must be equal 16/8 bytes");
-static_assert(sizeof(int32_t) == (32 / 8),  "sizeof(int32_t) must be equal 32/8 bytes");
-static_assert(sizeof(int64_t) == (64 / 8),  "sizeof(int64_t) must be equal 64/8 bytes");
-
-static_assert(sizeof(uint8_t) == (8 / 8),   "sizeof(uint8_t) must be equal 8/8 bytes");
-static_assert(sizeof(uint16_t) == (16 / 8), "sizeof(uint16_t) must be equal 16/8 bytes");
-static_assert(sizeof(uint32_t) == (32 / 8), "sizeof(uint32_t) must be equal 32/8 bytes");
-static_assert(sizeof(uint64_t) == (64 / 8), "sizeof(uint64_t) must be equal 64/8 bytes");
 
 
 #ifndef uintptr_t
@@ -23,6 +11,27 @@ static_assert(sizeof(uint64_t) == (64 / 8), "sizeof(uint64_t) must be equal 64/8
     typedef __typeof(sizeof(char *)) uintptr_t;
 #endif
 
+#ifndef isize
+    #define isize isize
+    typedef long isize;
+#endif
+
+#ifndef usize
+    #define usize usize
+    typedef __typeof(sizeof(0)) usize;
+#endif
+
+#ifndef byte_t
+    #define byte_t byte_t
+    typedef unsigned char byte_t;
+#endif
+
+
+#define PTRDIFF_MAX ((ptrdiff_t) (~((ptrdiff_t) 0) >> 1))
+#define PTRDIFF_MIN (-PTRDIFF_MAX - 1)
+
+
+#if 0
 #ifndef intptr_t
     #define intptr_t intptr_t
     #if _LIBC_ARCH_BITS_64
@@ -51,8 +60,14 @@ static_assert(sizeof(uint64_t) == (64 / 8), "sizeof(uint64_t) must be equal 64/8
 #define UINT64_MXB  0b1111111111111111111111111111111111111111111111111111111111111111
 
 
-#define PTRDIFF_MAX ((ptrdiff_t) (~((ptrdiff_t) 0) >> 1))
-#define PTRDIFF_MIN (-PTRDIFF_MAX - 1)
-
+typedef int8_t int_least8_t;
+typedef uint8_t uint_least8_t;
+typedef int16_t int_least16_t;
+typedef uint16_t uint_least16_t;
+typedef int32_t int_least32_t;
+typedef uint32_t uint_least32_t;
+typedef int64_t int_least64_t;
+typedef uint64_t uint_least64_t;
+#endif
 
 #endif /* __STDINT_H__ */

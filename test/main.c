@@ -8,6 +8,9 @@
 #include <progname.h>
 #include <time.h>
 #include <malloc.h>
+#include <fcntl.h>
+#include <syscall.h>
+#include <sys/mman.h>
 
 
 int _fputs(const char *s, fd_t fd) {
@@ -17,12 +20,14 @@ int _fputs(const char *s, fd_t fd) {
 #define print_line_feed() write(STDOUT_FILENO, "\n", 1)
 
 
+
 int main(void) {
     szdp_t *szdp;
     time_t _time;
     struct tm *tm;
     char buftest[11];
     const char *progname;
+    const char *fullprogname;
     const char *env_test_var;
     char cwd[100];
 
@@ -37,6 +42,10 @@ int main(void) {
 
     progname = getprogname();
     _fputs(progname, STDOUT_FILENO);
+    print_line_feed();
+
+    fullprogname = getfullprogname();
+    _fputs(fullprogname, STDOUT_FILENO);
     print_line_feed();
 
     

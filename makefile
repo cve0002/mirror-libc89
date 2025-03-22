@@ -8,11 +8,10 @@ CC := clang
 
 AFLAGS := -felf64 -w+x -w+error -w+all -w-error=reloc-rel-dword -iarch/
 
-CSTD := -std=c89 -ansi
 INCLUDE := -Iarch/$(TARGET) ${patsubst %, -I%, ${wildcard include/*/}} -Iinclude/ -Isource/
 CWARN := -Werror -Wall -Wvla -pedantic-errors
-CNOFLAGS := -nostdlib -nostdinc -fno-builtin -fno-common -fnoexecstack -fno-stack-protector
-CFLAGS := $(CSTD) $(INCLUDE) $(CWARN) -ffreestanding -fdata-sections
+CNOFLAGS := -nostdlib -nostdinc -fno-builtin -fno-common -fno-stack-protector
+CFLAGS := -std=c89 $(INCLUDE) $(CWARN) $(CNOFLAGS) -ffreestanding -fdata-sections
 
 ASMSRC := ${wildcard arch/$(TARGET)/**.S}
 ASMOBJ := $(ASMSRC:.S=.S.o)
@@ -32,7 +31,7 @@ objdump:
 
 test: $(LIB)
 	$(CC) $(CFLAGS) -nostartfiles test/main.c $(LIB) -o test/main
-	@echo '====================================================='
+	@echo '========================================================================='
 	@./test/main
 
 clean:
