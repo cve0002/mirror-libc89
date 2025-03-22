@@ -4,14 +4,12 @@ linux x64 c standard library implementation (for c89)
 
 --------------------------
 
-building
---------
+### building
     make CC=$cc clean lib
 where `$cc` is your compiler, that supports c89
 
 --------------------------
 
-testing
--------
+### testing
     make clean lib test
 
